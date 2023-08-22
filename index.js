@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-
 const pool = new Pool({
     user: 'admin',
     host: 'dpg-cji6ce0cfp5c738nmssg-a',
@@ -75,7 +74,7 @@ app.get('/users', (req, res) => {
             res.status(500).send('Error fetching users');
         } else {
             const usernames = result.rows.map(row => row.username);
-            res.send(usernames.map(username => username)); // Sending all usernames as a single string
+            res.json(usernames); // Sending all usernames as a single string
         }
     });
 });
